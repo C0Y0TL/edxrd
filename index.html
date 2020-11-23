@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#FAFAFA">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/EDXRD.css">
+
+    <title>Electron Density &amp; X-Ray Diffraction</title>
+</head>
+<body>
+
+<div class="progress" id="calc-progress-box">
+	<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+</div>
+
+<nav class="navbar navbar-dark bg-primary justify-content-center">
+	<span class="navbar-brand text-center font-weight-bold">
+	EDX-RD
+	</span>
+	<span class="navbar-text text-center">
+    Electron Density &amp; X-Ray Diffraction
+	</span>
+</nav>
+
+<p>
+	<button id="btnCollapseSamples" class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseSamples" aria-expanded="false" aria-controls="collapseSamples">Библиотека примеров<img class="navbar-toggler-icon" src="images/icons/ic_arrow_drop_down_white_24.svg" width="24" height="24" alt="Drop Down">
+	</button>
+</p>
+<div class="collapse" id="collapseSamples">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="card mb-2"">
+					<img class="card-img-top" src="images/samples/sa.png" alt="">
+					<div class="card-body">
+						<h4 class="card-title">Стеариновая кислота</h4>
+						<p class="card-text">Хим. формула: С<sub>17</sub>Н<sub>35</sub>COOH</p>
+					</div>
+					<div class="card-body">
+						<button type="button" class="btn btn-primary sampleLink" name="stearicacid">Расчитать<br/>параметры</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card mb-2"">
+					<img class="card-img-top" src="images/samples/full.png" alt="">
+					<div class="card-body">
+						<h4 class="card-title">Фуллерен С<sub>60</sub></h4>
+						<p class="card-text">Хим. формула: С<sub>60</sub></p>
+					</div>
+					<div class="card-body">
+						<button type="button" class="btn btn-primary sampleLink" name="fullerene">Расчитать<br/>параметры</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+			<h5 class="text-center font-weight-bold">Электронная плотность</h5>
+			<hr>
+			<h6>Одномерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="axisXED" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Ось X</span>
+					</label>
+					<br />
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="axisYED" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Ось Y</span>
+					</label>
+					<br />
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="axisZED" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Ось Z</span>
+					</label>
+				</div>
+			</form>
+			<h6>Двумерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="contourED" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Контурный график поверхности</span>
+					</label>
+				</div>
+			</form>
+			<h6>Трёхмерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="surfaceED" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Трёхмерная поверхность</span>
+					</label>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<h5 class="text-center font-weight-bold">Рентгеновская дифракция</h5>
+			<hr>
+			<h6>Одномерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="axisXXRD" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Ось X</span>
+					</label>
+				</div>
+			</form>
+			<h6>Двумерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="contourXRD" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Контурный график поверхности <span class="badge badge-info">МЕДЛЕННЫЙ ПРОЦЕСС</span></span>
+					</label>
+				</div>
+			</form>
+			<h6>Трёхмерная</h6>
+			<form>
+				<div class="form-group">
+					<label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+					<input type="checkbox" class="custom-control-input" id="surfaceXRD" disabled>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Трёхмерная поверхность <span class="badge badge-info">МЕДЛЕННЫЙ ПРОЦЕСС</span></span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="browseBox">
+			<label class="btn btn-outline-primary btn-lg btn-block"><span id="browseButtonTitle" >Обзор...</span><input id="browseButtons" type="file" onchange="processFiles(this.files)" hidden></label>
+		</div>
+		<div class="col-sm-4">
+			<button id="calcButton" type="button" class="btn btn-outline-success btn-lg btn-block mb-2" onclick="calc()" disabled>Готово</button>
+		</div>
+		<div class="col-sm-4">
+			<button id="reloadButton" type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="location.reload()">Обновить</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="plotly-content">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+		<div id="fileOutput" style="display: none"></div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<span class="text-muted">
+			    <a class="nav-link text-center" href="../../">Вернуться назад</a>
+		</span>
+	</div>
+</footer>
+
+<div class="modal fade" id="image-zoom" tabindex="-1" role="dialog" aria-labelledby="image-zoom" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        	<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        	<span aria-hidden="true">&times;</span>
+	        </button>
+        </div>
+        <div class="modal-body">
+        	<img src="" class="full-size-image" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lib/plotly-latest.min.js"></script>
+
+<script type="text/javascript" src="js/EDXRD/interface-control.js"></script>
+<script type="text/javascript" src="js/EDXRD/onload.js"></script>
+<script type="text/javascript" src="js/EDXRD/read-file.js"></script>
+<script type="text/javascript" src="js/EDXRD/calc-worker.js"></script>
+<script type="text/javascript" src="js/EDXRD/samples.js"></script>
+
+</body>
+</html>

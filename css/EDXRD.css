@@ -1,0 +1,19 @@
+.btn#btnCollapseSamples {
+    border-radius: 0px;
+    border: 0;
+}
+
+.btn#btnCollapseSamples:hover,
+.btn#btnCollapseSamples:focus,
+.btn#btnCollapseSamples:active {
+	border-radius: 0px;
+	border: 0;
+}
+
+.progress {
+	border-radius: 0px;
+}
+
+.card-img-top {
+ 	cursor: zoom-in;
+}
