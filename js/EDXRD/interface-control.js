@@ -18,7 +18,7 @@ function checkboxesControl (checkboxesID, boolean) {
 	}
 }
 
-/* СКрыть или показать тег
+/* Скрыть или показать тег
 sh принимает два значения 'show' или 'hide'
 elemetsID принимает строку следующего вида "ID1,ID2,ID3,ID4,..." */
 function visibleControl(sh, elemetsID) {
